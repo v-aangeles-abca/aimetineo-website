@@ -897,15 +897,21 @@ footer { background: #1E1C19; padding: 36px var(--pad); display: flex; align-ite
 .lang-toggle {
   display: inline-flex; align-items: center; gap: 6px;
   margin-left: 16px; padding: 6px 12px;
-  background: transparent; border: 1.5px solid rgba(45,42,38,0.15);
+  background: transparent; border: 1.5px solid rgba(245,240,232,0.25);
   border-radius: 100px; cursor: pointer;
   font-family: inherit; font-size: 11px; font-weight: 700;
   letter-spacing: 1.5px; transition: all 0.2s;
 }
-.lang-toggle:hover { border-color: var(--dark); }
-.lang-opt { color: rgba(45,42,38,0.4); cursor: pointer; transition: color 0.18s; }
-.lang-opt.active { color: var(--dark); }
-.lang-sep { color: rgba(45,42,38,0.2); font-weight: 300; }
+.lang-toggle:hover { border-color: var(--gold); }
+.lang-opt { color: rgba(245,240,232,0.45); cursor: pointer; transition: color 0.18s; padding: 2px 4px; }
+.lang-opt.active { color: var(--gold); }
+.lang-sep { color: rgba(245,240,232,0.25); font-weight: 300; }
+
+/* Light nav variant (if used on a light background somewhere) */
+#main-nav:not(.dark) .lang-opt { color: rgba(45,42,38,0.4); }
+#main-nav:not(.dark) .lang-opt.active { color: var(--dark); }
+#main-nav:not(.dark) .lang-toggle { border-color: rgba(45,42,38,0.15); }
+#main-nav:not(.dark) .lang-sep { color: rgba(45,42,38,0.2); }
 
 @media (max-width: 900px) {
   .lang-toggle {
