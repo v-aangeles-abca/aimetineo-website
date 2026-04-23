@@ -507,30 +507,60 @@ footer {
 @media (max-width: 1024px) {
   .video-grid { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 860px) {
+@media (max-width: 1000px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+  nav { height: 64px; padding: 0 20px; }
+  .nav-logo { font-size: 20px; }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto; padding-top: 64px; }
   .hero-img { min-height: 55vw; order: -1; }
-  .hero-text { padding: 40px var(--pad); text-align: center; }
-  .hero-eyebrow { justify-content: center; }
-  .hero-sub { margin: 0 auto 32px; }
-  .hero-actions { justify-content: center; }
-  .hero-pills { justify-content: center; }
+  .hero-text { padding: 32px 20px 48px; text-align: center; }
+  .hero-eyebrow { justify-content: center; font-size: 10px; letter-spacing: 3px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 48px) !important; }
+  .hero-sub { margin: 0 auto 28px; font-size: 14px; }
+  .hero-actions { justify-content: center; gap: 10px; }
+  .hero-actions .btn-filled, .hero-actions .btn-ghost { padding: 13px 26px; font-size: 13px; }
+  .hero-pills { justify-content: center; gap: 8px; }
+  .hero-pills .pill { font-size: 11px; padding: 6px 12px; }
   .hero-img-badge { left: 50%; transform: translateX(-50%); bottom: -20px; }
   .about { grid-template-columns: 1fr; }
-  .about-img { min-height: 320px; }
-  .about-text { padding: 60px var(--pad); }
+  .about-img { min-height: 280px; }
+  .about-text { padding: 48px 20px; }
   .about-text h2, .about-text p { max-width: 100%; }
   .about-text .btn-filled { align-self: center; }
   .services-grid { grid-template-columns: 1fr; }
+  .services { padding: 60px 20px; }
+  .section-h2 { font-size: clamp(26px, 6vw, 36px) !important; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stat-item { border-bottom: 1px solid rgba(245,240,235,0.1); }
+  .stat-item { border-bottom: 1px solid rgba(245,240,235,0.1); padding: 24px 16px; }
+  .stat-num { font-size: clamp(32px, 7vw, 44px) !important; }
   .testi-grid { grid-template-columns: 1fr; }
   .cta { grid-template-columns: 1fr; }
-  .cta-img { min-height: 260px; }
-  .portfolio-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .cta-img { min-height: 240px; }
+  .cta-text { padding: 48px 20px; }
+  .portfolio { padding: 60px 20px; }
+  .portfolio-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .port-filters { gap: 6px; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .port-filter { flex-shrink: 0; font-size: 12px; padding: 7px 14px; }
+  .brands { padding: 60px 20px; }
+  .brand-grid { gap: 24px; }
+  .testimonials { padding: 60px 20px; }
+  footer { flex-direction: column; text-align: center; gap: 16px; padding: 28px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  /* Coaching page mobile */
+  .c-hero { grid-template-columns: 1fr; padding-top: 64px; }
+  .c-hero-text { padding: 32px 20px 48px; }
+  .c-hero-img { min-height: 280px; order: -1; }
+  .c-hero-card { bottom: 20px; right: 20px; padding: 14px 16px; }
+}
+@media (max-width: 480px) {
+  .video-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn-filled, .hero-actions .btn-ghost { width: 100%; justify-content: center; }
+  .stats-grid { grid-template-columns: 1fr; }
 }
 
 /* ── BLOG / DEFAULT PAGE ── */
@@ -555,52 +585,60 @@ footer {
   display: flex !important;
   flex-direction: column;
   position: absolute;
-  top: 72px; left: 0; right: 0;
+  top: 64px; left: 0; right: 0;
   background: rgba(253,252,251,0.98);
-  padding: 24px var(--pad);
-  gap: 20px;
+  padding: 24px 20px 28px;
+  gap: 18px;
   border-bottom: 1px solid rgba(45,42,38,0.08);
-  box-shadow: 0 8px 24px rgba(45,42,38,0.08);
+  box-shadow: 0 12px 32px rgba(45,42,38,0.12);
   z-index: 99;
+  align-items: stretch;
+  text-align: center;
+}
+.nav-links.mobile-open a {
+  padding: 8px 0;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(45,42,38,0.06);
+}
+.nav-links.mobile-open a:last-of-type { border-bottom: none; }
+.nav-links.mobile-open .nav-cta,
+.nav-links.mobile-open .nav-coaching {
+  border-bottom: none;
+  padding: 13px 28px;
+  justify-content: center;
+  margin-top: 6px;
+}
+/* On coaching page, mobile menu matches dark nav */
+.page-template-page-coaching .nav-links.mobile-open,
+.page-template-page-coaching-form .nav-links.mobile-open {
+  background: rgba(30,28,25,0.98);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.page-template-page-coaching .nav-links.mobile-open a,
+.page-template-page-coaching-form .nav-links.mobile-open a {
+  color: rgba(245,240,235,0.85);
+  border-bottom-color: rgba(255,255,255,0.08);
 }
 
 /* ── COACHING PAGE STYLES ── */
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --cream:    #F5F0EB;
-  --warm-bg:  #EDE5DC;
-  --dark:     #2D2A26;
-  --muted:    #6B6560;
-  --lavender: #B8A9C9;
-  --gold:     #C4A87C;
-  --white:    #FDFCFB;
-  --sage:     #8FA89A;
-  --font-h:   'Playfair Display', Georgia, serif;
-  --font-b:   'Inter', system-ui, sans-serif;
-  --max:      1200px;
-  --pad:      clamp(24px, 6vw, 96px);
-  --ease:     cubic-bezier(0.16, 1, 0.3, 1);
-}
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body { font-family: var(--font-b); background: var(--white); color: var(--muted); overflow-x: hidden; }
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 var(--pad); height: 72px;
+/* ── COACHING PAGE DARK NAV OVERRIDE ── */
+.page-template-page-coaching nav,
+.page-template-page-coaching-form nav {
   background: rgba(45,42,38,0.96);
-  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.nav-logo { font-family: var(--font-h); font-size: 22px; font-weight: 700; color: var(--cream); letter-spacing: -0.5px; }
-.nav-logo span { color: var(--gold); }
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.5px; color: rgba(245,240,235,0.6); text-transform: uppercase; transition: color 0.2s; }
-.nav-links a:hover { color: var(--cream); }
+.page-template-page-coaching .nav-logo,
+.page-template-page-coaching-form .nav-logo { color: var(--cream); }
+.page-template-page-coaching .nav-logo span,
+.page-template-page-coaching-form .nav-logo span { color: var(--gold); }
+.page-template-page-coaching .nav-links a,
+.page-template-page-coaching-form .nav-links a { color: rgba(245,240,235,0.65); }
+.page-template-page-coaching .nav-links a:hover,
+.page-template-page-coaching-form .nav-links a:hover { color: var(--cream); }
+.page-template-page-coaching .hamburger span,
+.page-template-page-coaching-form .hamburger span { background: var(--cream); }
 .nav-back { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.15); color: rgba(245,240,235,0.7); font-size: 13px; font-weight: 500; transition: all 0.2s; }
 .nav-back:hover { border-color: var(--lavender); color: var(--lavender); }
 .nav-cta-c { display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; border-radius: 100px; background: var(--gold); color: var(--dark); font-size: 13px; font-weight: 600; transition: all 0.25s; }
@@ -913,8 +951,9 @@ footer { background: #1E1C19; padding: 36px var(--pad); display: flex; align-ite
 #main-nav:not(.dark) .lang-toggle { border-color: rgba(45,42,38,0.15); }
 #main-nav:not(.dark) .lang-sep { color: rgba(45,42,38,0.2); }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .lang-toggle {
-    margin: 12px auto 0; font-size: 13px; padding: 8px 16px;
+    margin: 10px auto 0; font-size: 12px; padding: 8px 16px;
+    align-self: center;
   }
 }

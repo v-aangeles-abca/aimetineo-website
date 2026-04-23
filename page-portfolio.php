@@ -33,6 +33,13 @@ get_header(); ?>
       <button class="port-filter" data-cat="in-person">In Person Business <span class="filter-count" id="fc-in-person"></span></button>
     </div>
 
+    <div class="port-lang-filters">
+      <span class="port-lang-label" data-i18n="port.lang">Language:</span>
+      <button class="port-lang active" data-lang="all" data-i18n="port.all">All</button>
+      <button class="port-lang" data-lang="en">English</button>
+      <button class="port-lang" data-lang="es">Español</button>
+    </div>
+
     <div class="video-grid video-grid-full" id="video-grid-full"></div>
 
     <div class="port-show-more" id="port-show-more-wrap">
@@ -97,6 +104,25 @@ get_header(); ?>
   min-width: 22px;
 }
 .port-filter.active .filter-count { background: rgba(255,255,255,0.2); }
+
+.port-lang-filters {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 40px; padding-bottom: 32px;
+  border-bottom: 1px solid rgba(45,42,38,0.08);
+  flex-wrap: wrap;
+}
+.port-lang-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--muted); margin-right: 6px;
+}
+.port-lang {
+  padding: 8px 18px; border-radius: 100px;
+  background: transparent; border: 1px solid rgba(45,42,38,0.15);
+  color: var(--muted); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.port-lang:hover { border-color: var(--dark); color: var(--dark); }
+.port-lang.active { background: var(--lavender); color: var(--white); border-color: var(--lavender); }
 .video-grid-full {
   grid-template-columns: repeat(5, 1fr) !important;
 }
@@ -160,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const lbClose     = document.getElementById('lb-close');
 
   let activeCat    = 'all';
+  let activeLang   = 'all';
   let visibleCount = 20;
 
   // Populate filter counts
@@ -169,8 +196,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (el) el.textContent = cat === 'all' ? VIDEOS.length : VIDEOS.filter(v => v.cat === cat).length;
   });
 
+  function filterVideos() {
+    return VIDEOS.filter(v => {
+      const catMatch = activeCat === 'all' || v.cat === activeCat;
+      const langMatch = activeLang === 'all' || !v.lang || v.lang === activeLang || v.lang === 'both';
+      return catMatch && langMatch;
+    });
+  }
+
   function renderGrid() {
-    const filtered = activeCat === 'all' ? VIDEOS : VIDEOS.filter(v => v.cat === activeCat);
+    const filtered = filterVideos();
     grid.innerHTML = '';
     filtered.slice(0, visibleCount).forEach((v, i) => {
       const card = document.createElement('div');
@@ -214,6 +249,16 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.port-filter').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       activeCat = btn.dataset.cat;
+      visibleCount = 20;
+      renderGrid();
+    });
+  });
+
+  document.querySelectorAll('.port-lang').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.port-lang').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeLang = btn.dataset.lang;
       visibleCount = 20;
       renderGrid();
     });
