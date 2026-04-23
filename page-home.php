@@ -55,25 +55,25 @@ get_header(); ?>
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-text">
-    <span class="hero-eyebrow">UGC Creator &middot; Influencer &middot; Storyteller</span>
+    <span class="hero-eyebrow" data-i18n="hero.badge">✦ UGC Creator · Influencer · Storyteller</span>
     <h1><?php echo esc_html($hero_line1); ?><br><em><?php echo esc_html($hero_line2); ?></em><br><?php echo esc_html($hero_line3); ?></h1>
     <p class="hero-sub"><?php echo esc_html($hero_sub); ?></p>
     <div class="hero-actions">
-      <a href="#portfolio" class="btn-filled">See My Work</a>
-      <a href="#contact" class="btn-ghost">Let's Collaborate</a>
+      <a href="#portfolio" class="btn-filled" data-i18n="hero.seework">See My Work</a>
+      <a href="#contact" class="btn-ghost" data-i18n="hero.collab">Let's Collaborate</a>
     </div>
     <div class="hero-pills">
-      <span class="pill">Voiceover Content</span>
-      <span class="pill">Lifestyle & Aesthetic</span>
-      <span class="pill">Product Demos</span>
-      <span class="pill">Bilingual EN/ES</span>
+      <span class="pill" data-i18n="hero.pill1">Voiceover Content</span>
+      <span class="pill" data-i18n="hero.pill2">Lifestyle & Aesthetic</span>
+      <span class="pill" data-i18n="hero.pill3">Product Demos</span>
+      <span class="pill" data-i18n="hero.pill4">Bilingual EN/ES</span>
     </div>
   </div>
   <div class="hero-img">
     <img src="<?php echo esc_url($hero_photo); ?>" alt="Aimé Tineo — UGC Creator" loading="eager">
     <div class="hero-img-badge">
       <div class="badge-num"><?php echo esc_html($stat4_num . $stat4_suf); ?></div>
-      <div class="badge-label">Brand Collabs</div>
+      <div class="badge-label" data-i18n="hero.badgelbl">Brand Collabs</div>
     </div>
   </div>
 </section>
@@ -96,12 +96,12 @@ get_header(); ?>
 <!-- SERVICES -->
 <section class="services" id="services">
   <div style="max-width:var(--max);margin:0 auto;">
-    <span class="section-tag">What I Create</span>
-    <h2 class="section-h2">Content that connects,<br>converts & captivates</h2>
+    <span class="section-tag" data-i18n="services.tag">What I Create</span>
+    <h2 class="section-h2" data-i18n="services.h2">Content that connects,<br>converts & captivates</h2>
     <div class="services-grid">
-      <div class="service-card"><div class="service-num">01</div><div class="service-line"></div><div class="service-title">Voiceover Content</div><div class="service-desc">Authentic narrated videos that tell your product's story with warmth and trust — the kind that audiences remember.</div></div>
-      <div class="service-card"><div class="service-num">02</div><div class="service-line"></div><div class="service-title">Aesthetic & Lifestyle</div><div class="service-desc">Beautifully styled, cinematic content with a luxury editorial feel — perfect for fashion, beauty, and home brands.</div></div>
-      <div class="service-card"><div class="service-num">03</div><div class="service-line"></div><div class="service-title">Product Demos & Reviews</div><div class="service-desc">Hands-on unboxings, try-ons, and honest reviews that highlight benefits and drive real purchase decisions.</div></div>
+      <div class="service-card"><div class="service-num">01</div><div class="service-line"></div><div class="service-title" data-i18n="services.ugc.title">Voiceover Content</div><div class="service-desc" data-i18n="services.ugc.desc">Authentic narrated videos that tell your product's story with warmth and trust — the kind that audiences remember.</div></div>
+      <div class="service-card"><div class="service-num">02</div><div class="service-line"></div><div class="service-title" data-i18n="services.brand.title">Aesthetic & Lifestyle</div><div class="service-desc" data-i18n="services.brand.desc">Beautifully styled, cinematic content with a luxury editorial feel — perfect for fashion, beauty, and home brands.</div></div>
+      <div class="service-card"><div class="service-num">03</div><div class="service-line"></div><div class="service-title" data-i18n="services.coach.title">Product Demos & Reviews</div><div class="service-desc" data-i18n="services.coach.desc">Hands-on unboxings, try-ons, and honest reviews that highlight benefits and drive real purchase decisions.</div></div>
     </div>
   </div>
 </section>
@@ -110,11 +110,11 @@ get_header(); ?>
 <section class="about" id="about">
   <div class="about-img"><img src="<?php echo esc_url($about_photo); ?>" alt="Aimé Tineo" loading="lazy"></div>
   <div class="about-text">
-    <span class="section-tag">About Aimé</span>
+    <span class="section-tag" data-i18n="about.tag">About Aimé</span>
     <h2><?php echo esc_html($about_title); ?></h2>
     <p><?php echo esc_html($about_p1); ?></p>
     <p><?php echo esc_html($about_p2); ?></p>
-    <a href="#contact" class="btn-filled">Work With Me</a>
+    <a href="#contact" class="btn-filled" data-i18n="about.cta">Work With Me</a>
   </div>
 </section>
 
@@ -134,23 +134,23 @@ get_header(); ?>
 <section class="portfolio" id="portfolio">
   <div style="max-width:var(--max);margin:0 auto;">
     <div class="portfolio-header">
-      <div><span class="section-tag">Recent Work</span><h2 class="section-h2">A glimpse into my<br>latest UGC content</h2></div>
+      <div><span class="section-tag" data-i18n="portfolio.tag">Recent Work</span><h2 class="section-h2" data-i18n="portfolio.h2">A glimpse into my<br>latest UGC content</h2></div>
       <?php
       $port_page = get_page_by_path('portfolio');
       $port_url  = $port_page ? get_permalink($port_page->ID) : home_url('/portfolio/');
       ?>
-      <a href="<?php echo esc_url($port_url); ?>" class="btn-ghost" style="white-space:nowrap;flex-shrink:0">View Full Portfolio &rarr;</a>
+      <a href="<?php echo esc_url($port_url); ?>" class="btn-ghost" style="white-space:nowrap;flex-shrink:0" data-i18n="portfolio.viewfull">View Full Portfolio →</a>
     </div>
     <div class="port-filters">
-      <button class="port-filter active" data-cat="all">All</button>
-      <button class="port-filter" data-cat="body-skincare">Body Skincare</button>
-      <button class="port-filter" data-cat="fashion-jewelry">Fashion & Jewelry</button>
-      <button class="port-filter" data-cat="home-tech">Home Tech</button>
-      <button class="port-filter" data-cat="in-person">In Person Business</button>
+      <button class="port-filter active" data-cat="all" data-i18n="portfolio.all">All</button>
+      <button class="port-filter" data-cat="body-skincare" data-i18n="portfolio.body">Body Skincare</button>
+      <button class="port-filter" data-cat="fashion-jewelry" data-i18n="portfolio.fashion">Fashion & Jewelry</button>
+      <button class="port-filter" data-cat="home-tech" data-i18n="portfolio.home">Home Tech</button>
+      <button class="port-filter" data-cat="in-person" data-i18n="portfolio.inperson">In Person Business</button>
     </div>
     <div class="video-grid" id="video-grid"></div>
     <div class="port-show-more" id="port-home-more">
-      <button class="btn-ghost" id="show-more-btn">Load More</button>
+      <button class="btn-ghost" id="show-more-btn" data-i18n="portfolio.showmore">Load More</button>
     </div>
   </div>
 </section>
@@ -159,8 +159,8 @@ get_header(); ?>
 <!-- BRANDS -->
 <section class="brands">
   <div style="max-width:var(--max);margin:0 auto;">
-    <span class="section-tag">Trusted By</span>
-    <h2 class="section-h2">80+ Brands Worldwide</h2>
+    <span class="section-tag" data-i18n="brands.tag">Trusted By</span>
+    <h2 class="section-h2" data-i18n="brands.h2">80+ Brands Worldwide</h2>
     <div class="brand-grid">
       <?php if ($has_cms_brands): ?>
         <?php foreach ($cms_brands as $b): ?>
@@ -202,14 +202,14 @@ get_header(); ?>
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="cta-text">
-    <span class="section-tag" style="color:var(--gold)">Let's Work Together</span>
+    <span class="section-tag" style="color:var(--gold)" data-i18n="contact.tag">Let's Work Together</span>
     <h2><?php echo esc_html($cta_title); ?></h2>
     <p><?php echo esc_html($cta_sub); ?></p>
     <div class="cta-email"><?php echo esc_html($cta_email); ?></div>
     <div class="cta-location"><?php echo esc_html($cta_loc); ?></div>
     <div class="cta-btns">
-      <a href="mailto:<?php echo esc_attr($cta_email); ?>" class="btn-cream">Get In Touch</a>
-      <a href="<?php echo home_url('/coaching/'); ?>" class="btn-gold-outline">Explore Coaching ✦</a>
+      <a href="mailto:<?php echo esc_attr($cta_email); ?>" class="btn-cream" data-i18n="contact.btn">Get In Touch</a>
+      <a href="<?php echo home_url('/coaching/'); ?>" class="btn-gold-outline" data-i18n="contact.coaching">Explore Coaching ✦</a>
     </div>
   </div>
   <div class="cta-img"><img src="<?php echo esc_url($cta_photo); ?>" alt="Aimé Tineo" loading="lazy"></div>
