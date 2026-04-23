@@ -1,0 +1,50 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: pr-check-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  php-lint:
+    name: PHP Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Lint PHP files
+        run: find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+
+  theme-check:
+    name: Theme Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate style.css header
+        run: |
+          if ! head -1 style.css | grep -q '/\*'; then
+            echo "::error::style.css is missing the required theme header"
+            exit 1
+          fi
+          echo "Theme header found in style.css"
+
+      - name: Check required theme files exist
+        run: |
+          missing=0
+          for f in style.css index.php functions.php header.php footer.php; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing required theme file: $f"
+              missing=1
+            fi
+          done
+          exit $missing
