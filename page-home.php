@@ -71,10 +71,6 @@ get_header(); ?>
   </div>
   <div class="hero-img">
     <img src="<?php echo esc_url($hero_photo); ?>" alt="Aimé Tineo — UGC Creator" loading="eager">
-    <div class="hero-img-badge">
-      <div class="badge-num"><?php echo esc_html($stat4_num . $stat4_suf); ?></div>
-      <div class="badge-label" data-i18n="hero.badgelbl">Brand Collabs</div>
-    </div>
   </div>
 </section>
 
